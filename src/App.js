@@ -3,15 +3,18 @@ import './fonts/fonts.css';
 import './App.css';
 import InputForm from './components/InputForm';
 import Task from './components/Task';
-
+import Modal from './components/Modal';
 
 function App() {
   const [tasks, setTasks] = useState([]);
-
+  const [modalActive,setModalActive]=useState(false)
+  const changeActive=(val)=>{
+    setModalActive(val);
+  }
   const createTask = (task) => {
     const newTask = {
       id: Date.now(),
-      task: task,
+      task: task[0].toUpperCase()+task.slice(1),
       completed: false,
     }
     setTasks([newTask, ...tasks])
@@ -20,8 +23,14 @@ function App() {
   const removeTask = (id) => {
     setTasks(tasks.filter(task => task.id !== id))
   }
-  const toggleTask = (id) => {
-    setTasks([...tasks.map(task => task.id === id ? { ...task, completed: !task.completed } : { ...task })])
+  const statusTask = (id) => {
+    let newTasks=[...tasks].filter(task=>{
+      if(task.id==id){
+        task.completed=!task.completed
+      }
+      return task;
+    })
+    setTasks(newTasks);
   }
   useEffect(() => {
     const localData = localStorage.getItem("TODO_APP");
@@ -35,12 +44,15 @@ function App() {
       <InputForm create={createTask} />
       {
         tasks.length !== 0 ?
-          tasks.map(task =>
+        tasks.map(task =>
             <Task
-              toggle={toggleTask}
+              status={statusTask}
               task={task}
               remove={removeTask}
               key={task.id}
+              changeActive={changeActive}
+              active={modalActive}
+              setModalActive={setModalActive}
             />
           ) :
           <div className='start'>
@@ -49,6 +61,7 @@ function App() {
           </div>
       }
     </div>
+
   );
 }
 

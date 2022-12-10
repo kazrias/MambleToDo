@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import MyButton from './UI/button/MyButton'
 
 const InputForm = ({ create }) => {
   const [task, setTask] = useState('');
@@ -11,7 +10,6 @@ const InputForm = ({ create }) => {
     }
     else {
       setInputLimit(true);
-      console.log('it works here', inputLimit);
     }
   }
   const addNewTask = (e) => {
@@ -20,7 +18,14 @@ const InputForm = ({ create }) => {
     setTask('');
   }
   return (
-    <div>
+    <div className='wrapper'>
+      <label className='checkbox checkbox__hide'>
+          <div className='checkbox__hide-box'>
+            <input className='checkbox__input' type="checkbox" />
+            <span className='checkbox__span'></span>
+          </div>
+          <span className='checkbox__task'>Hide completed</span>
+        </label>
       <p className='task'>Task</p>
       <form className='form'>
         <input className={!inputLimit ? 'input' : 'input input-limit'}
@@ -31,6 +36,7 @@ const InputForm = ({ create }) => {
         {inputLimit && <span className='Error'>Task content can contain max 54 characters.</span>}
         <button className='btn' disabled={!task} onClick={addNewTask}>Add</button>
       </form>
+  
     </div>
   )
 }

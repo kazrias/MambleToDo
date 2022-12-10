@@ -12,9 +12,9 @@ body {
 }
 
 .App {
-  max-width: 1310px;
+  max-width: 1200px;
   padding: 0 15px;
-  margin: 256px auto 0;
+  margin: 120px auto 0;
 }
 
 .task {
@@ -22,9 +22,9 @@ body {
 }
 
 .form {
-  position: relative;
   display: flex;
   gap: 24px;
+  position: relative;
   margin-bottom: 62px;
 }
 
@@ -58,6 +58,7 @@ body {
   font-family: "Poppins-Medium", sans-serif;
   font-weight: 500;
   cursor: pointer;
+  min-height: 45px;
 }
 
 .btn:disabled {
@@ -68,6 +69,7 @@ body {
 
 .btn__remove {
   background: transparent;
+
 }
 
 .input-limit {
@@ -109,6 +111,7 @@ body {
   border-bottom: 1px solid #E5E5E5;
   transition: all .5s;
   padding-left: 3px;
+  position: relative;
 }
 
 .task-box:hover {
@@ -122,8 +125,13 @@ body {
   cursor: pointer;
   padding: 20px 0px;
 }
-
-
+.checkbox__hide{
+  gap: 18px;
+  margin-right: 13px;
+}
+.checkbox__hide-box{
+  margin-left: auto;
+}
 .checkbox__input {
   width: 1px;
   height: 1px;
@@ -152,4 +160,84 @@ body {
 
 .checkbox__task {
   color: #666666;
+  margin-top: 1.5px;
+}
+
+.wrapper{
+  display: flex;
+  flex-direction: column;
+}
+.completed{
+  background-color: black;
+}
+.text-change{
+  color: #ACACAC;
+}
+
+.myModal{
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  display: none;
+  background: rgba(0,0,0,0.5);
+  z-index: 100;
+}
+
+
+
+.myModal.active{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.modal{
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0,0,0,.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform:scale(0);
+}
+.modal.active{
+  transform:scale(1);
+}
+.modal__content{
+  padding: 50px;
+  background-color: white;
+  border-radius: 16px;
+}
+.modal__content h5{
+  font-family: "Poppins-Medium";
+  font-weight: 500;
+  color: #008594;
+}
+.btn__wrapper{
+  display: flex;
+  margin-top: 45px;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+}
+.btn__delete{
+  color: #174348;
+  font-family: 'Poppins-Regular', sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 28px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+@media (max-width:550px){
+  .form{
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 30px;
+  }
 }
