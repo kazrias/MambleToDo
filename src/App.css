@@ -1,38 +1,155 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-size: 18px;
+  line-height: 27px;
+  font-family: 'Poppins-Regular', sans-serif;
+  font-weight: 400;
+}
+
 .App {
-  text-align: center;
+  max-width: 1310px;
+  padding: 0 15px;
+  margin: 256px auto 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.task {
+  color: #174348;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.form {
+  position: relative;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  gap: 24px;
+  margin-bottom: 62px;
 }
 
-.App-link {
-  color: #61dafb;
+.input {
+  max-width: 954px;
+  width: 100%;
+  padding: 13px 16px;
+  border: 1px solid #FFCD04;
+  border-radius: 4px;
+  font-size: inherit;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.input:focus {
+  outline: none;
+}
+
+.input::placeholder {
+  font-size: 18px;
+  line-height: 27px;
+  font-family: 'Poppins-Regular', sans-serif;
+  font-weight: 400;
+  color: #DFDFDF;
+}
+
+.btn {
+  width: 100px;
+  color: #fff;
+  background-color: #008594;
+  border: none;
+  border-radius: 4px;
+  font-family: "Poppins-Medium", sans-serif;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.btn:disabled {
+  cursor: not-allowed;
+  background-color: grey;
+  opacity: .8;
+}
+
+.btn__remove {
+  background: transparent;
+}
+
+.input-limit {
+  border: 1px solid #FF3104;
+}
+
+.Error {
+  display: block;
+  color: #FF3104;
+  font-size: 12px;
+  line-height: 18px;
+  position: absolute;
+  bottom: -16px;
+  left: 0;
+}
+
+.start {
+  font-family: 'Poppins-Medium', sans-serif;
+  font-size: 24px;
+  line-height: 36px;
+  color: #ACACAC;
+  text-align: center;
+  margin-top: 140px;
+}
+
+.start span {
+  display: block;
+  font-size: 36px;
+  line-height: 54px;
+  color: #666666;
+}
+
+.task-box {
+  display: flex;
+  justify-content: space-between;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  max-width: 1170px;
+  border-bottom: 1px solid #E5E5E5;
+  transition: all .5s;
+  padding-left: 3px;
+}
+
+.task-box:hover {
+  background-color: rgb(221, 246, 253);
+}
+
+.checkbox {
+  display: flex;
+  gap: 32px;
+  flex-basis: 100%;
+  cursor: pointer;
+  padding: 20px 0px;
+}
+
+
+.checkbox__input {
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  position: absolute;
+}
+
+.checkbox__span {
+  width: 18px;
+  height: 18px;
+  background-color: transparent;
+  border: 2px solid #008594;
+  border-radius: 4px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.checkbox__input:checked+.checkbox__span {
+  background-color: #008594;
+  background-image: url(./icons/check-on-white.svg);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+
+.checkbox__task {
+  color: #666666;
 }
