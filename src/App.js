@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import './fonts/fonts.css';
 import './App.css';
 import InputForm from './components/InputForm';
 import Task from './components/Task';
+
 
 function App() {
   const [tasks, setTasks] = useState([]);
@@ -22,6 +23,13 @@ function App() {
   const toggleTask = (id) => {
     setTasks([...tasks.map(task => task.id === id ? { ...task, completed: !task.completed } : { ...task })])
   }
+  useEffect(() => {
+    const localData = localStorage.getItem("TODO_APP");
+    if (localData !== null) setTasks(JSON.parse(localData));
+  }, []);
+  useEffect(() => {
+    localStorage.setItem('TODO_APP', JSON.stringify(tasks));
+}, [tasks]);
   return (
     <div className="App">
       <InputForm create={createTask} />
